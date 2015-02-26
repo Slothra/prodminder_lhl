@@ -11,4 +11,14 @@ html lang="en"
 
   body
     .page
-      == yield
+      / == slim :header
+
+      .body-content
+        == yield
+
+      / == slim :footer
+
+    - if @dev_mode == true
+      .developer-tools
+        code
+          = session.inspect

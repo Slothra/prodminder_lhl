@@ -11,5 +11,23 @@
 // ------------------------------------
 +global-reset
 
-body
-  background: whitesmoke
+// ------------------------------------
+// Setup
+// ------------------------------------
+@import setup/mixins
+@import setup/variables
+@import setup/animations
+@import setup/type
+@import setup/globals
+
+// ------------------------------------
+// Components
+// ------------------------------------
+@import components/footer
+@import components/header
+
+// ------------------------------------
+// Specifics
+// ------------------------------------
+@import pages/404
+@import pages/index
