@@ -8,6 +8,13 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
+/.sass-cache
+/.rbenv-gemsets
+/.rbenv-vars
+.DS_Store
+*.DS_Store
+*/.DS_Store
+.env
 
 ## Specific to RubyMotion:
 .dat*
