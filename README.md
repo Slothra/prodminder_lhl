@@ -22,10 +22,11 @@ Midterm Project for Lighthouse Labs
 ## Running the Project
 
 1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
+2. `shotgun config.ru`
+3. In your browser goto `http://localhost:9393/`
+4. Boom success!
 
-### Git work flow for working on features
+### Git work flow for working on featuress
 
 * `git checkout master`
 * `git pull` look for `Everything is up to date`
