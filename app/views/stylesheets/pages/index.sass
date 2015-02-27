@@ -25,13 +25,19 @@
     border-radius: 100%
 
   .button
-    padding: 1em
-    margin: 2em
     background: cornflowerblue
     border-radius: 4px
-    display: inline-block
+    border: 1px solid transparent
     color: #fff
+    display: inline-block
     font-size: 125%
+    margin: 2em
+    padding: 1em
+    transition: border-color, background 100ms ease
+
+    &:hover
+      border-color: white
+      background: transparent
 
   h1
     padding: 1em 0
