@@ -22,7 +22,7 @@ Midterm Project for Lighthouse Labs
 ## Running the Project
 
 1. `bundle install`
-2. `shotgun config.ru`
+2. If using vagrant use `shotgun -p 3000 -o 0.0.0.0` or use if locally `shotgun config.ru`
 3. In your browser goto `http://localhost:9393/`
 4. Boom success!
 
