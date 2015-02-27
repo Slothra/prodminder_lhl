@@ -6,6 +6,7 @@ class CreateSessions
       s.string :hash1
       s.string :hash2
       s.string :hash3
+      s.timestamps
     end
   end
 
