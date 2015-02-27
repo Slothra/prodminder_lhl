@@ -5,9 +5,9 @@ class ScreeningsImporter
   end
 
   def import
-    field_names = ['name', 'condition_id', 'gender', '18_24_min', '18_24_max', 
-      '25_29_min', '25_29_max', '30_39_min', '30_39_max', '40_49_min', '40_49_max',
-      '50_59_min', '50_59_max', '60_69_min', '60_69_max', '70_min', '70_max', 'notes']
+    field_names = ['name', 'condition_id', 'gender', 'min_18_24', 'max_18_24', 
+      'min_25_29', 'max_25_29', 'min_30_39', 'max_30_39', 'min_40_49', 'max_40_49',
+      'min_50_59', 'max_50_59', 'min_60_69', 'max_60_69', 'min_70_up', 'max_70_up', 'exception-notes']
 
     print "Importing screenings from #{@filename}: "
     failure_count = 0
