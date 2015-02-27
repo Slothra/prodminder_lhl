@@ -1,4 +1,4 @@
-class CreateSessions
+class CreateSessions < ActiveRecord::Migration
   def up
     create_table :sessions do |s|
       s.boolean :logged_in

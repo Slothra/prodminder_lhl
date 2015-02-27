@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       u.string :gender
       u.string :email
       u.string :phone
+      u.datetime :actived_on
       u.timestamps
     end
   end
