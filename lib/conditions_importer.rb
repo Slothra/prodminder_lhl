@@ -5,7 +5,7 @@ class ConditionsImporter
   end
 
   def import
-    field_names = ['name', 'description', 'source', 'url']
+    field_names = ['name', 'description', 'health_authority', 'url']
 
     print "Importing conditions from #{@filename}: "
     failure_count = 0
