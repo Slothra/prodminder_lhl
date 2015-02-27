@@ -33,7 +33,8 @@ post '/new' do
 		redirect '/user/validate'
 	else
 		#error message
-		slim :'user/new'
+    slim :'user/new'
+  end
 end
 
 post '/account' do
