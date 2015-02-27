@@ -26,7 +26,7 @@ Midterm Project for Lighthouse Labs
 3. In your browser goto `http://localhost:9393/`
 4. Boom success!
 
-### Git work flow for working on featuress
+### Git work flow for working on features
 
 * `git checkout master`
 * `git pull` look for `Everything is up to date`

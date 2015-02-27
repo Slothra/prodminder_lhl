@@ -1,0 +1,63 @@
+body
+  color: #444
+  background: whitesmoke
+
+.app-header
+  +container(100%)
+  background: #444
+
+  .navbar-left
+    padding: 10px 0
+    float: left
+
+  .navbar-right
+    padding: 10px 0
+    float: right
+
+  .logo-brand
+    font-weight: bold
+    color: #fff
+  a
+    color: #fff
+    text-align: center
+    margin-right: 10px
+
+  li
+    display: inline-block
+
+.dashboard
+  padding: 2em 0
+
+.filters
+  border: 1px solid rgba(black,.25)
+  border-radius: 4px
+  background: #a2a2a2
+  padding: 0 10px
+  color: #fff
+
+.card
+  margin: 2em 0
+  background: white
+  border: 1px solid rgba(black, .15)
+  +span(12 of 12)
+
+  .card-title
+    font-size: 200%
+    font-weight: $font-weight-light
+    line-height: 1.2em
+    margin-bottom: .6em
+
+  .card-meta
+    +span(9 of 12)
+    padding: 2em
+    margin-right: 0
+
+  .card-controls
+    +span(3 of 12 last)
+    padding: 2em
+
+  .card-control
+    margin-bottom: 2em
+
+  .switch-info
+    text-align: center

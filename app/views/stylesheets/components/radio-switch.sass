@@ -1,0 +1,55 @@
+.switch
+  position: relative
+  height: 26px
+  width: 120px
+  margin: 0 auto 10px
+  background: white
+  border-radius: 3px
+  border: 1px solid #ccc
+  overflow: hidden
+
+.switch-label
+  position: relative
+  z-index: 2
+  float: left
+  width: 58px
+  line-height: 26px
+  font-size: 11px
+  color: #222
+  text-align: center
+  cursor: pointer
+
+  &:active
+    font-weight: bold
+
+.switch-label-off
+  padding-left: 2px
+
+.switch-label-on
+  padding-right: 2px
+
+  .switch-selection
+    background: red
+
+.switch-input
+  display: none
+  &:checked +
+    .switch-label
+      font-weight: bold
+      color: rgba(0, 0, 0, 0.65)
+      transition: 0.15s ease-out
+      transition-property: color, text-shadow
+    .switch-label-on ~ .switch-selection
+      left: 60px
+
+.switch-selection
+  position: absolute
+  z-index: 1
+  top: 0
+  left: 0
+  width: 58px
+  height: 26px
+  background-color: #65bd63
+  background-image: linear-gradient(top, #9dd993, #65bd63)
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2)
+  transition: left 0.15s ease-out
