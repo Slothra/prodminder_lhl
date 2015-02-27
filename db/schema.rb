@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226120006) do
+ActiveRecord::Schema.define(version: 20150227152500) do
 
   create_table "conditions", force: :cascade do |t|
     t.string   "name"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20150226120006) do
     t.integer "max_60_69"
     t.integer "min_70_up"
     t.integer "max_70_up"
-    t.text    "exception_note"
   end
 
   create_table "sessions", force: :cascade do |t|

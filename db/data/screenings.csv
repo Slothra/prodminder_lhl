@@ -1,0 +1,18 @@
+Pap Test,Cervical Cancer,female,nil,nil,1095,1095,1095,1095,1095,1095,1095,1095,1095,1095,nil,nil
+Mammogram,Breast Cancer,female,nil,nil,nil,nil,nil,nil,nil,nil,730,1095,730,1095,730,1095
+A1C,Type 2 Diabetes,female,1095,1825,1095,1825,1095,1825,1095,1825,1095,1825,1095,1825,1095,1825
+Consultation with Doctor,Coronary Artery Disease,female,1825,1825,1825,1825,1825,1825,1825,1825,1825,1825,1825,1825,1825,1825
+Cholesterol Test,Cholesterol,female,nil,nil,nil,nil,nil,nil,nil,nil,365,365,365,365,365,365
+Blood pressure test,Hypertension,female,365,365,365,365,365,365,365,365,365,365,365,365,365,365
+Puff test,Glaucoma,female,3650,3650,3650,3650,3650,3650,1095,1095,730,1095,365,365,365,365
+Bone Density Test,Osteoporosis,female,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,730,730,730,730
+Fecal Immunochemical Test,Colorectal Cancer,female,nil,nil,nil,nil,nil,nil,nil,nil,730,730,730,730,730,730
+Dental Exam,Various,all,182,182,182,182,182,182,182,182,182,182,182,182,182,182
+Eye exam,Various,all,730,1095,730,1095,730,1095,730,1095,730,1095,730,1095,730,1095
+A1C,Type 2 Diabetes,male,1095,1825,1095,1825,1095,1825,1095,1825,1095,1825,1095,1825,1095,1825
+Consultation with Doctor,Coronary Artery Disease,male,1825,1825,1825,1825,1825,1825,365,1095,365,1095,365,1095,365,1095
+Cholesterol Test,Cholesterol,male,nil,nil,nil,nil,nil,nil,365,365,365,365,365,365,365,365
+Blood pressure test,Hypertension,male,365,365,365,365,365,365,365,365,365,365,365,365,365,365
+Puff test,Glaucoma,male,3650,3650,3650,3650,3650,3650,1095,1095,730,730,365,365,365,365
+Bone Density Test,Osteoporosis,male,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,730,730,730,730
+Fecal Immunochemical Test,Colorectal Cancer,male,nil,nil,nil,nil,nil,nil,nil,nil,730,730,730,730,730,730

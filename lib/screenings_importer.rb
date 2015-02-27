@@ -7,7 +7,7 @@ class ScreeningsImporter
   def import
     field_names = ['name', 'condition_id', 'gender', 'min_18_24', 'max_18_24', 
       'min_25_29', 'max_25_29', 'min_30_39', 'max_30_39', 'min_40_49', 'max_40_49',
-      'min_50_59', 'max_50_59', 'min_60_69', 'max_60_69', 'min_70_up', 'max_70_up', 'exception-notes']
+      'min_50_59', 'max_50_59', 'min_60_69', 'max_60_69', 'min_70_up', 'max_70_up']
 
     print "Importing screenings from #{@filename}: "
     failure_count = 0
@@ -15,9 +15,9 @@ class ScreeningsImporter
     Screening.transaction do
       File.open(@filename).each do |line|
         data = line.chomp.split(',')
-        attribute_hash = Screening[field_names.zip(data)]
+        attribute_hash = Hash[field_names.zip(data)]
         begin
-          student = Screening.create!(attribute_hash)
+          screenings = Screening.create!(attribute_hash)
           print "."; STDOUT.flush
         rescue ActiveRecord::UnknownAttributeError
           print "!"; STDOUT.flush
