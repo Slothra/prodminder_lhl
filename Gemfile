@@ -14,6 +14,7 @@ gem 'compass'
 gem 'slim'
 gem 'breakpoint'
 gem 'susy'
+gem "autoprefixer-rails"
 
 group :development, :test do
   gem 'pry'
