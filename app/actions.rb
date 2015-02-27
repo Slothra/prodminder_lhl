@@ -15,6 +15,7 @@ end
 # 404
 not_found do
   redirect '/404.html'
+  slim :index , locals: { body_class: "index"}
 end
 
 #login for returning user
@@ -40,13 +41,16 @@ end
 get 'user/:id/account' do
 end
 
+get '/login' do
+  slim :login, locals: { body_class: "login"}
+end
+
 #sends email
 post '/new' do
   # valid email/info
   if #valid
     redirect '/user/validate'
   else
-    #error message
     slim :'user/new'
   end
 end
@@ -67,4 +71,3 @@ end
 
 delete '/account' do
 end
-
