@@ -1,3 +1,8 @@
+body.index
+  .site-footer
+    a
+      color: $blue
+
 .masthead
   background-image: url("/images/masthead-bg.png")
   background-position: center
@@ -10,6 +15,11 @@
   height: 100%
   min-height: 100%
   color: #fff
+
+  h1
+    padding: 1em 0
+    font-size: 200%
+    letter-spacing: .003em
 
   .container
     display: table-cell
@@ -24,37 +34,18 @@
     display: block
     border-radius: 100%
 
-  .button
-    background: cornflowerblue
-    border-radius: 4px
-    border: 1px solid transparent
-    color: #fff
-    display: inline-block
-    font-size: 125%
-    margin: 2em
-    padding: 1em
-    transition: border-color, background 100ms ease
+  .button:hover
+    background: transparent
 
-    &:hover
-      border-color: white
-      background: transparent
-
-  h1
-    padding: 1em 0
-    font-size: 200%
-    letter-spacing: .003em
-
-  .login-button
+  .button.login
     position: absolute
     top: 15px
     right: 15px
-    padding: 8px 15px
     border: 1px solid white
-    border-radius: 3px
-    color: #fff
+    background: transparent
     transition: background-color, border-color 100ms ease-in-out
 
     &:hover
-      background: cornflowerblue
-      border-color: cornflowerblue
+      background: $blue
+      border-color: $blue
       color: #fff
