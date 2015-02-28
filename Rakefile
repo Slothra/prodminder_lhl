@@ -11,12 +11,12 @@ Rake::Task["db:drop"].clear
 # NOTE: Assumes SQLite3 DB
 desc "create the database"
 task "db:create" do
-  touch 'db/db.sqlite3'
+  touch 'dbh9gb1kt8q6i0'
 end
 
 desc "drop the database"
 task "db:drop" do
-  rm_f 'db/db.sqlite3'
+  rm_f 'dbh9gb1kt8q6i0'
 end
 
 desc "import screenings"
