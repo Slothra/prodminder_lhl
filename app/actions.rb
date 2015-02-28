@@ -26,6 +26,21 @@ get '/dashboard/validate' do
   slim :dashboard_email_validate, locals: { body_class: "app email-validate" }
 end
 
+# Post end point for user creation
+post '/user/create' do
+  # NOTE: We need to do something with age before we put it into the database
+
+  # age = params[:dob]
+
+  # user = User.new(
+  #   email: params[:email],
+  #   phone: params[:phone],
+  #   age: params[:dob],
+  #   gender: params[:gender]
+  # )
+  # user.save
+end
+
 #--------------------------------------
 # Static Files
 #--------------------------------------
