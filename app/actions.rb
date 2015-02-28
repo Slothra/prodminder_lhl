@@ -2,6 +2,15 @@ get '/' do
   slim :index , locals: { body_class: "index" }
 end
 
+# 404
+not_found do
+  # redirect '/404'
+  slim :x404 , locals: { body_class: "x404"}
+end
+
+#
+# Static Files
+#
 get '/stylesheets/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass(:"stylesheets/#{params[:name]}", Compass.sass_engine_options )
@@ -12,11 +21,6 @@ get '/dashboard' do
   slim :dashboard, locals: { body_class: "app dashboard" }
 end
 
-# 404
-not_found do
-  redirect '/404.html'
-  slim :index , locals: { body_class: "index"}
-end
 
 #login for returning user
 get '/user' do

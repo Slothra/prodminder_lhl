@@ -1,0 +1,69 @@
+body.x404
+
+  .site-footer
+    display: none
+
+  .page
+    height: 100%
+    width: 100%
+
+    &:before,
+    &:after
+      content: ""
+      position: absolute
+      bottom: 0
+      left: 0
+      height: 100%
+      width: 100%
+      z-index: 1
+
+    &:before
+      background-image: url("/images/bale-5433430f.gif")
+      background-repeat: no-repeat
+      background-size: cover
+      background-position: center
+
+    &::after
+      background-color: rgba(black, .15)
+      z-index: 2
+
+  .error-message-container
+    height: 100%
+    position: absolute
+    left: 35%
+    top: 20%
+
+  .body-content
+    height: 100%
+    width: 100%
+    display: table
+    z-index: 10
+
+  .container
+    display: table-cell
+    padding: 10% 0
+    vertical-align: middle
+    z-index: 10
+
+    +breakpoint(max-width 480px)
+      padding: 10% 2%
+
+.error-message
+  color: #fff
+  text-align: center
+  margin: 0 auto
+  text-shadow: 1px 1px 0px rgba(black, .8)
+
+  &.large
+    font-size: 8em
+    font-weight: $font-weight-bold
+    line-height: 1.2em
+
+  &.small
+    display: block
+    font-size: 1.25em
+    font-weight: $font-weight-normal
+
+    span
+      +breakpoint(min-width 481px)
+        display: block
