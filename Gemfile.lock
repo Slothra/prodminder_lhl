@@ -42,9 +42,14 @@ GEM
     ffi (1.9.6)
     i18n (0.7.0)
     json (1.8.2)
+    mailgun-ruby (1.0.3)
+      json (~> 1.8)
+      rest-client (~> 1.6)
     method_source (0.8.2)
+    mime-types (2.4.3)
     minitest (5.5.1)
     multi_json (1.10.1)
+    netrc (0.10.3)
     pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -61,6 +66,9 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    rest-client (1.7.3)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
@@ -114,6 +122,7 @@ DEPENDENCIES
   autoprefixer-rails
   breakpoint
   compass
+  mailgun-ruby (~> 1.0.3)
   pg
   pry
   puma
