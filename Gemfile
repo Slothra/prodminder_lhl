@@ -17,6 +17,9 @@ gem 'breakpoint'
 gem 'susy'
 gem "autoprefixer-rails"
 
+# APIs
+gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
+
 group :development, :test do
   gem 'pry'
   gem 'shotgun'

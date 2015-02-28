@@ -5,6 +5,7 @@ require 'pry'
 require 'active_support/all'
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'mailgun'
 
 # for front-end
 require 'slim'
