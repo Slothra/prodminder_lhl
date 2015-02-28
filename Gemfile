@@ -7,6 +7,7 @@ gem 'tux'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-activerecord'
+gem 'pg'
 
 # Front end
 gem 'sass'
