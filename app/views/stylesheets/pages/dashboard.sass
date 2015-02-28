@@ -28,18 +28,22 @@ body.app
   .dashboard .container
     padding: 2em 0
 
-.filters
-  border: 1px solid rgba(black,.25)
-  border-radius: 4px
-  background: #a2a2a2
-  padding: 0 10px
-  color: #fff
+.cards
+  +pie-clearfix
+  width: 100%
 
 .card
-  +span(12 of 12)
-  margin: 2em 0
+  +pie-clearfix
+  width: 100%
+  display: block
+  margin: 2em auto
   background: white
   border: 1px solid rgba(black, .15)
+
+  +breakpoint(max-width 700px)
+    width: 95%
+    margin-left: auto
+    margin-right: auto
 
   .card-title
     font-size: 200%
@@ -49,12 +53,16 @@ body.app
 
   .card-meta
     +span(9 of 12)
-    padding: 2em
+    padding: 2em 0 2em 2em
     margin-right: 0
 
   .card-controls
     +span(3 of 12 last)
     padding: 2em
+
+    +breakpoint(max-width 700px)
+      padding-left: 1em
+      padding-right: 1em
 
   .card-control
     margin-bottom: 2em
