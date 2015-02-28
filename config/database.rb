@@ -14,10 +14,10 @@ ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
   encoding: 'unicode',
   pool: 5,
-  database: 'dbh9gb1kt8q6i0',
-  username: 'rfkycrnkxmofri',
-  password: 'm_1tczh9mWMJR3B_RmulTctNxC',
-  host: 'ec2-23-21-231-14.compute-1.amazonaws.com',
+  database: ENV['DATABASE_NAME'],
+  username: ENV['DATABASE_USERNAME'],
+  password: ENV['DATABASE_PASSWORD'],
+  host: ENV['DATABASE_HOST'],
   port: 5432,
   min_messages: 'error'
 )

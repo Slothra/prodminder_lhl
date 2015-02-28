@@ -6,6 +6,7 @@ require 'active_support/all'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'mailgun'
+require 'dotenv'
 
 # for front-end
 require 'slim'
@@ -14,8 +15,12 @@ require 'breakpoint'
 require 'susy'
 require 'autoprefixer-rails'
 
+# Globals
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
+
+# Load DotENV environment variables
+Dotenv.load
 
 configure do
   # Sinatra's variables
@@ -55,6 +60,7 @@ configure do
     config.http_fonts_dir = "fonts"
     config.relative_assets = true
     config.color_output = true
+    config.disable_warnings = true
   end
 
   set :sass, Compass.sass_engine_options
