@@ -1,0 +1,33 @@
+body.app
+  .app-header
+    +container(100%)
+    background: #444
+
+    .navbar
+      +pie-clearfix
+
+    .navbar-left
+      line-height: 40px
+      float: left
+
+    .navbar-right
+      line-height: 40px
+      float: right
+
+    .logo-brand
+      font-weight: bold
+      color: #fff
+    a
+      color: #fff
+      text-align: center
+      padding: 10px
+      transition: background-color, 125ms ease-in-out
+
+      &:hover
+        background: #222
+
+      &:active
+        background: #666
+
+    li
+      display: inline-block
