@@ -1,0 +1,25 @@
+section.new-user-container
+  form.new-users-signup method="POST" action="/"
+
+    h1 Complete your profile now
+    h2 and get reminded about getting prodded
+
+    input.email name="email" type="email" placeholder="me@example.com" required=""
+
+    input.phone name="phone" type="tel" placeholder="555-555-5555 (receive SMS)" required=""
+
+    input.birth name="dob" required="" type="month" max="#{ 13.years.ago.to_date }" placeholder="Year and month of birth"
+
+    .faux-select
+      select.gender name="gender"
+        option selected="" Gender
+        option Female
+        option Male
+
+    input.button type="submit" value="Save my Settings"
+
+    ul.fine-print
+      li We'll never sell your data
+      li We'll never spam you
+      li We honestly don't want to know you
+

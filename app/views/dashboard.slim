@@ -3,6 +3,8 @@
 .dashboard
   .container
 
+    == slim :_app_new_user_welcome
+
     .cards
       .card
         .card-meta
@@ -34,5 +36,7 @@
             span.switch-selection
 
           p.switch-info 6 months
+
+    == slim :_app_new_user_form
 
 == slim :_app_footer
