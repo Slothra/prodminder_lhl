@@ -63,30 +63,34 @@ def send_email(action)
   mg_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
 
   # Establish default email address for our outbound emails:
-  prodminder_sender   = 'notify@prodminder.com'
-  prodminder_subject  = 'Prodminder Update'
+  prodminder_sender   = "Prodminder Notifications <notify@prodminder.com>"
+  prodminder_subject  = 'Prodminder Notification'
 
   case action
   when 'notify'
-    prodminder_sender = 'notify@prodminder.com'
+    prodminder_sender = "Prodminder Notifications <notify@prodminder.com>"
     prodminder_subject = 'Prodminder Notification'
   when 'validate_new_user'
-    prodminder_sender = 'welcome@prodminder.com'
+    prodminder_sender = "Prodminder Notifications <notify@prodminder.com>"
     prodminder_subject = 'Welcome to Prodminder!'
   when 'announce'
-    prodminder_sender = 'no-reply@prodminder.com'
+    prodminder_sender = "Prodminder Notifications <notify@prodminder.com>"
     prodminder_subject = 'New message from the Prodminder Team'
   when 'remove'
-    prodminder_sender = 'goodbye@prodminder.com'
+    prodminder_sender = "Prodminder Notifications <notify@prodminder.com>"
     prodminder_subject = 'Sorry to see you go!'
   end
-
-  message_params = {
-    :from => prodminder_sender
-    :to => User.email
-    :subject => prodminder_subject
-    :text => 'We have not yet built the email body case statement.'
-  }
+  
+  data = Multimap.new
+  data[:from] = prodminder_sender
+  data[:to] = User.email
+  data[:subject] = prodminder_subject
+  data[:text] = "We haven't built the email body case statement yet."
+  data[:html] = "<html>HTML version of the body will go here.</html>"
+  
+  # Send the actual email:
+  mg_client.send_message "mg.prodminder.com", data
+	
 end
 
 
