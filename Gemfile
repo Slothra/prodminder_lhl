@@ -9,6 +9,7 @@ gem 'sinatra-contrib'
 gem 'sinatra-activerecord'
 gem 'pg'
 gem 'dotenv'
+gem 'twilio-ruby'
 
 # Front end
 gem 'sass'

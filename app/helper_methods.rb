@@ -93,6 +93,23 @@ def send_email(action)
 	
 end
 
+# Twilio API helper
+def send_text(action)
+  # Grab Twilio account_sid and auth_token from .env
+  account_sid = ENV['TWILIO_ACCOUNT_SID']
+  auth_token = ENV['TWILIO_AUTH_TOKEN']
+
+  # Connect to Twilio
+  @twilio_client = Twilio::REST::Client.new account_sid, auth_token
+
+  # Send text message
+  @twilio_client.account.messages.create({
+    :to   => User.phone, # This needs to be sanitized phone number input, i.e. "6041234567"
+    :from => '+15149002273'
+    :body => "Twilio API test text" # We'll need to concatenate our SMS message into here
+  })
+end
+
 
 
 User.where("#{},#{}")
