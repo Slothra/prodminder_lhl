@@ -8,10 +8,9 @@
       - @conditions.each do |c|
         .card
           .card-meta
-            .card-title #{c.name}
-            p.card-description Cervical cancer is a malignant tumour that starts in the cells of the cervix. Malignant means that it can spread, or metastasize, to other parts of the body.
-
-            a href="#{ c.url }"#{ c.health_authority }
+            .card-title #{ c.name }
+            p.card-description #{ c.description }
+            a.card-source-link< href="#{ c.url }"Source: #{ c.health_authority }
 
           .card-controls
 
@@ -26,15 +25,14 @@
             - freq = @screening.min_25_29
             - if freq > 360
               - freq = freq / 365
-              p.switch-info #{freq} years
+              p.switch-info data-screening-id="" #{freq} years
             - elsif freq == 0
-              p Not recommended
+              p.switch-info Not recommended
             - else
               - freq = freq / 30
               p.switch-info #{freq} months
 
-            
-
+      / DOING TO LEAVE THIS HERE FOR DEV WORK ON STATIC CARD
       /.card
         .card-meta
           .card-title Breast Cancer
