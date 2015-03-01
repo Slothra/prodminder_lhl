@@ -43,6 +43,7 @@ GEM
     ffi (1.9.6)
     i18n (0.7.0)
     json (1.8.2)
+    jwt (1.3.0)
     mailgun-ruby (1.0.3)
       json (~> 1.8)
       rest-client (~> 1.6)
@@ -112,6 +113,10 @@ GEM
       ripl-multi_line (>= 0.2.4)
       ripl-rack (>= 0.2.0)
       sinatra (>= 1.2.1)
+    twilio-ruby (3.15.1)
+      builder (>= 2.1.2)
+      jwt (~> 1.0)
+      multi_json (>= 1.3.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
 
@@ -138,3 +143,4 @@ DEPENDENCIES
   sqlite3
   susy
   tux
+  twilio-ruby
