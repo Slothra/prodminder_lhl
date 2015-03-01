@@ -1,32 +1,45 @@
 
-Sorts
-def sort_gender(gender)
-	if gender == "M"
-		10
-	else
-		11
+# Sorts
+# def sort_gender(gender)
+# 	if gender == "M"
+# 		10
+# 	else
+# 		11
+# 	end
+# end
+
+def calc_next_reminder
+  user_screening = @user.reminders.screening_id.next_reminder
+  if user_screening.exist? && user_screening.next_reminder > Date.today
+    user_screening.next_reminder
+  else
+    Date.today + @user.reminders.screenings_id.sort_age(@user.age)
+  end
+end
+
+def sort_age(age)
+	case age
+	when 18 <= age && age <= 24
+		self.min_18_24
+	when 25 <= age && age <= 29
+		self.min_25_29
+	when 30 <= age && age <= 39
+		self.min_30_39
+	when 40 <= age && age <= 49
+		self.min_40_49
+	when 50 <= age && age <= 59
+		self.min_50_59
+	when 60 <= age && age <= 69
+		self.min_60_69
+	when 70 <= age
+		self.min_70_up
 	end
 end
 
-def sort_age(@user.age)
-	case age
-	when 18 <= age && age <= 24
-		"min_18_24"
-	when 25 <= age && age <= 29
-		"min_25_29"
-	when 30 <= age && age <= 39
-		"min_30_39"
-	when 40 <= age && age <= 49
-		"min_40_49"
-	when 50 <= age && age <= 59
-		"min_50_59"
-	when 60 <= age && age <= 69
-		"min_60_69"
-	when 70 <= age
-		"min_70_up"
-	else
-		"You must be 18 or older to use this service"
-	end
+def age
+  bday = self.birthday
+  now = Time.now.utc.to_date
+  now.year - bday.year - (bday.to_date.change(:year => now.year) > now ? 1 : 0)
 end
 
 def gen_params(user)
@@ -44,7 +57,7 @@ end
 @user.save
 
 def create_user_age(year, month)
-	birthday = date.new(year, month, 1)
+	birthday = Date.new(year, month, 1)
   now = Time.now.utc.to_date
   now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
 end
@@ -112,18 +125,18 @@ end
 
 
 
-User.where("#{},#{}")
+# User.where("#{},#{}")
 
-gen = arr[0]
-age = arr[1]
-Reminder.where("orders_count = ? AND locked = ?", params[:gen], params[:age])
+# gen = arr[0]
+# age = arr[1]
+# Reminder.where("orders_count = ? AND locked = ?", params[:gen], params[:age])
 
-User.where(:age "min_18_24").where(:age "min_25_29").where(:age "min_30_39")
+# User.where(:age "min_18_24").where(:age "min_25_29").where(:age "min_30_39")
 
-User.where("" >= :start_date AND created_at <= :end_date",
-  {start_date: params[:start_date], end_date: params[:end_date]})
+# User.where("" >= :start_date AND created_at <= :end_date",
+#   {start_date: params[:start_date], end_date: params[:end_date]})
 
-  Reminders = SELECT s.id, s.min_18_24 FROM screenings AS s JOIN reminder AS r WHERE S.id >= 10
+#   Reminders = SELECT s.id, s.min_18_24 FROM screenings AS s JOIN reminder AS r WHERE S.id >= 10
 
 
 

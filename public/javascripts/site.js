@@ -30,5 +30,7 @@ $(function() {
 
   });
 
+  // jquery for flipswitch button $(".switch-3 input").prop("checked")
+
 
 });
