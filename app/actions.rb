@@ -2,6 +2,7 @@
 # NOTE:
 # DON'T ADD TRAILING SLASHES TO PATHS
 #--------------------------------------
+@dev_mode = true
 
 get '/' do
   slim :index , locals: { body_class: "index" }
@@ -9,37 +10,67 @@ end
 
 # App home
 get '/dashboard' do
-	@screenings = Screening.all
-	@conditions = Condition.all
+  # @current_user_logged_in = false
+
+  if @current_user_logged_in
+    # -- User has not logged in yet
+    @conditions = Condition.all
+    # @screenings = Screening.all
+  else
+
+    # TODO -- User is logged in and returning to app
+    # Return User personalize active screenings and conditions
+    @conditions = Condition.all
+    @screenings = Condition.all
+
+  end
+
   slim :dashboard, locals: { body_class: "app dashboard" }
 end
 
 # User login
 get '/login' do
   slim :login, locals: { body_class: "login"}
+
+  @current_user_logged_in = true
 end
 
 get '/logout' do
+  if @current_user_logged_in
+   # TODO
+   # clear current user session
+     @current_user_logged_in = false
+  end
   redirect '/'
 end
 
 # User email validate
 get '/dashboard/validate' do
+  if @current_user_logged_in
+    # current user trying to re-validate email--why?
+    redirect "/dashboard"
+  end
+
+  # TODO
   # Custom generated url something like this
   # get '/user/:id/:private_session/validate' do
-  # redirect "/"
+  # redirect "/dashboard"
 
   slim :dashboard_email_validate, locals: { body_class: "app email-validate" }
 end
 
-
-
 # Post end point for user creation
 post '/user/create' do
-  # NOTE: We need to do something with age before we put it into the database
-
+  if @current_user_logged_in
+    # current user tryig to POST new user--why?
+    redirect "/"
+  end
+  # TODO
+  # We need to do something with age before we
+  # put it into the database
+  #
   # age = params[:dob]
-
+  #
   # user = User.new(
   #   email: params[:email],
   #   phone: params[:phone],
@@ -47,6 +78,7 @@ post '/user/create' do
   #   gender: params[:gender]
   # )
   # user.save
+  # @current_user_logged_in = true
 end
 
 #--------------------------------------
