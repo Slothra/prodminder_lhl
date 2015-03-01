@@ -37,7 +37,7 @@ def sort_age(age)
 end
 
 def age
-  bday = self.birthday
+  birthday = self.date_of_birth
   now = Time.now.utc.to_date
   now.year - bday.year - (bday.to_date.change(:year => now.year) > now ? 1 : 0)
 end
