@@ -16,12 +16,10 @@
 
           .card-controls
 
-            .switch
-              input#week_1.switch-input checked="" name="view" type="radio" value="week"
-              label.switch-label.switch-label-off for="week_1"  ON
-              input#month_1.switch-input name="view" type="radio" value="month"
-              label.switch-label.switch-label-on for="month_1"  OFF
-              span.switch-selection
+            label.switch.switch-green
+              input.switch-input type="checkbox"
+              span.switch-label data-off="Off" data-on="On"
+              span.switch-handle
 
             - @screening = Screening.find_by condition_id: c.name
             - freq = @screening.min_25_29
@@ -41,7 +39,7 @@
           p.card-description Breast cancer occurs when abnormal cells grow out of control in one or both breasts. They can invade nearby tissues and form a mass, called a malignant tumour. The cancer cells can spread (metastasize) to the lymph nodes  and other parts of the body.
         .card-controls
 
-          .switch
+          .switch.switch-green
             input#week.switch-input checked="" name="view" type="radio" value="week"
             label.switch-label.switch-label-off for="week"  ON
             input#month.switch-input name="view" type="radio" value="month"
