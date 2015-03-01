@@ -48,7 +48,7 @@ end
 # end
 
 def find_user
-  user = User.find(session[:user_id])
+  User.find(session[:user_id])
 end
 
 
@@ -83,7 +83,7 @@ def send_email(action)
   mg_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
 
   # Retrieve session user
-  user = 
+  user = find_user
 
   # Establish default email address for our outbound emails:
   prodminder_sender   = "Prodminder Notifications <notify@prodminder.com>"
@@ -121,6 +121,9 @@ def send_text(action)
   # Grab Twilio account_sid and auth_token from .env
   account_sid = ENV['TWILIO_ACCOUNT_SID']
   auth_token = ENV['TWILIO_AUTH_TOKEN']
+
+  # Retrieves user session
+  user = find_user
 
   # Connect to Twilio
   @twilio_client = Twilio::REST::Client.new account_sid, auth_token

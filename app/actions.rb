@@ -80,12 +80,20 @@ post '/user/create' do
   user = User.new(
     email: params[:email],
     phone: params[:phone],
-    age: params[:dob],
+    date_of_birth: params[:dob],
     gender: params[:gender]
   )
   user.save
   session[:user_id] = user.id
+  Session.new(
+    user_id: user.id
+    )
   @current_user_logged_in = true
+end
+
+post '/user/:id/validate/:session_id'
+  @current_user_logged_in = true
+  user = User.find(session[:user_id])
 end
 
 #--------------------------------------
