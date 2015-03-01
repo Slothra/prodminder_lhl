@@ -1,13 +1,19 @@
-section.new-user-container
-  form.new-users-signup method="POST" action="/"
+section.card.new-user
+  form.new-users-signup method="POST" action=""
 
-    h1 Complete your profile now
-    h2 and get reminded about getting prodded
+    h1.card-title Finish Notifications
+    p.card-description Provide your email or SMS number and we'll setup the rest!
 
-    input.email name="email" type="email" placeholder="me@example.com" required=""
+    ul.card-list
+      li We'll never sell your data
+      li We'll never spam you
+      li We honestly don't want to know you
 
-    input.phone name="phone" type="tel" placeholder="555-555-5555 (receive SMS)" required=""
+    input.email name="email" type="email" placeholder="gustavoe@hermanos.com" required=""
 
+    input.phone name="phone" type="tel" placeholder="555-555-5555 — for SMS prods"
+
+    //onfocus="(this.type='date')" <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date">
     input.birth name="dob" required="" type="month" max="#{ 13.years.ago.to_date }" placeholder="Year and month of birth"
 
     .faux-select
@@ -16,10 +22,7 @@ section.new-user-container
         option Female
         option Male
 
-    input.button type="submit" value="Save my Settings"
+    input.card-button.button type="submit" value="Sign Up"
 
-    ul.fine-print
-      li We'll never sell your data
-      li We'll never spam you
-      li We honestly don't want to know you
-
+    /success
+      / We Prodded your email!
