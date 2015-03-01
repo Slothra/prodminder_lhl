@@ -75,6 +75,9 @@ end
 def send_email(action)
   mg_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
 
+  # Retrieve session user
+  user = 
+
   # Establish default email address for our outbound emails:
   prodminder_sender   = "Prodminder Notifications <notify@prodminder.com>"
   prodminder_subject  = 'Prodminder Notification'
@@ -96,7 +99,7 @@ def send_email(action)
   
   data = Multimap.new
   data[:from] = prodminder_sender
-  data[:to] = User.email
+  data[:to] = user.email
   data[:subject] = prodminder_subject
   data[:text] = "We haven't built the email body case statement yet."
   data[:html] = "<html>HTML version of the body will go here.</html>"
