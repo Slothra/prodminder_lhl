@@ -42,19 +42,26 @@ def age
   now.year - bday.year - (bday.to_date.change(:year => now.year) > now ? 1 : 0)
 end
 
-def gen_params(user)
-	arr << sort_gender(user.gender)
-	arr << sort_age(user.age)
+# def gen_params(user)
+# 	arr << sort_gender(user.gender)
+# 	arr << sort_age(user.age)
+# end
+
+def find_user
+  user = User.find(session[:user_id])
 end
 
 
-@user = User.new(
-	age: create_user_age(params[:year],params[:month])
-	gender: params[:gender]
-	email: params[:email]
-	phone: params[:phone]
-)
-@user.save
+# def new_user
+#   @user = User.new(
+#   	age: create_user_age(params[:year],params[:month])
+#   	gender: params[:gender]
+#   	email: params[:email]
+#   	phone: params[:phone]
+#   )
+#   @user.save
+#   session[:user_id] = @user.id
+# end
 
 def create_user_age(year, month)
 	birthday = Date.new(year, month, 1)
@@ -62,7 +69,7 @@ def create_user_age(year, month)
   now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
 end
 
-@user = User.find_by email: params[:email]
+# @user = User.find_by email: params[:email]
 
 ##show all conditions/screenings/frequencies
 
