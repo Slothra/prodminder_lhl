@@ -8,6 +8,10 @@ get '/' do
   slim :index , locals: { body_class: "index" }
 end
 
+get '/policies-and-about' do
+  slim :policies_and_about , locals: { body_class: "policies" }
+end
+
 # App home
 get '/dashboard' do
   # @current_user_logged_in = false
