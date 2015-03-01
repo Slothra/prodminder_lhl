@@ -9,6 +9,8 @@ end
 
 # App home
 get '/dashboard' do
+	@screenings = Screening.all
+	@conditions = Condition.all
   slim :dashboard, locals: { body_class: "app dashboard" }
 end
 
