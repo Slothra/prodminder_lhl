@@ -1,8 +1,4 @@
 body.index
-  .site-footer
-    font-size: 75%
-    a
-      color: rgb(200, 200, 200)
 
   .button
     font-size: 100%
@@ -23,22 +19,13 @@ body.index
   color: #fff
 
   p
-    display: none
     font-size: 0.75em
 
   h1
-    padding: 1em 0
+    padding: 1em 0 .85em
     font-size: 3vw
     letter-spacing: .003em
     position: relative
-
-    &:after
-      content: "For your health."
-      font-size: 0.75em
-      position: relative
-      font-size: 11px
-      top: 30px
-      right: 7%
 
   .logo-brand
     font-size: 7.4vw
@@ -54,10 +41,11 @@ body.index
     padding-left: 5px
 
   h1 + .button
-    padding: 20px
+    padding: 15px 20px
 
     &:hover
-      background: transparent
+      background: adjust-lightness($blue, -5)
+      border-color: adjust-lightness($blue, -10)
 
   .button.login
     position: absolute
@@ -69,5 +57,5 @@ body.index
 
     &:hover
       background: $blue
-      border-color: $blue
+      border-color: adjust-lightness($blue, -10)
       color: #fff
