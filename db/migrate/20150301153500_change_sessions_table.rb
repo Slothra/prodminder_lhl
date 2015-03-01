@@ -1,4 +1,4 @@
-class AddCustomId < ActiveRecord::Migration
+class ChangeSessionsTable < ActiveRecord::Migration
   def change
     remove_column :sessions, :hash1
     remove_column :sessions, :hash2
