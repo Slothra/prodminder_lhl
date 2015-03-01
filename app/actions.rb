@@ -69,20 +69,36 @@ post '/user/create' do
     # current user tryig to POST new user--why?
     redirect "/"
   end
+
   # TODO
   # We need to do something with age before we
   # put it into the database
-  #
+  # binding.pry
   # age = params[:dob]
-  #
-  # user = User.new(
-  #   email: params[:email],
-  #   phone: params[:phone],
-  #   age: params[:dob],
-  #   gender: params[:gender]
-  # )
-  # user.save
-  # @current_user_logged_in = true
+
+
+  user = User.new(
+    email: params[:email],
+    phone: params[:phone],
+    age: params[:dob],
+    gender: params[:gender]
+  )
+  user.save
+  session[:user_id] = user.id
+  @current_user_logged_in = true
+end
+
+#--------------------------------------
+# Screening Reminders
+#--------------------------------------
+post '/user/:id/condition/:screening_id' do
+  reminder = Reminder.new(
+    user_id: @user.id,
+    screening_id: @user.conditions.screenings.id,
+    last_reminder: Date.today,
+    next_reminder: calc_next_reminder
+  )
+  reminder.save
 end
 
 #--------------------------------------
@@ -105,19 +121,6 @@ end
 # get '/user' do
 #   slim :user
 # end
-
-#--------------------------------------
-# Screening Reminders
-#--------------------------------------
-post '/user/:id/condition/:screening_id' do
-  reminder = Reminder.new(
-    user_id: @user.id,
-    screening_id: @user.conditions.screenings.id,
-    last_reminder: Date.today,
-    next_reminder: calc_next_reminder
-  )
-  reminder.save
-end
 
 # create new user
 # get '/user/new' do
