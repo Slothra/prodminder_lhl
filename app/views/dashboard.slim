@@ -6,23 +6,36 @@
     == slim :_app_new_user_welcome
 
     .cards
-      .card
-        .card-meta
-          .card-title Blood Test
-          p.card-description Cervical cancer is a malignant tumour that starts in the cells of the cervix. Malignant means that it can spread, or metastasize, to other parts of the body.
+      - @conditions = Condition.all
+      - @conditions.each do |c|
+        .card
+          .card-meta
+            .card-title #{ c.name }
+            p.card-description #{ c.description }
+            a.card-source-link< href="#{ c.url }"Source: #{ c.health_authority }
 
-        .card-controls
+          .card-controls
 
-          .switch
-            input#week_1.switch-input checked="" name="view" type="radio" value="week"
-            label.switch-label.switch-label-off for="week_1"  ON
-            input#month_1.switch-input name="view" type="radio" value="month"
-            label.switch-label.switch-label-on for="month_1"  OFF
-            span.switch-selection
+            .switch
+              input#week_1.switch-input checked="" name="view" type="radio" value="week"
+              label.switch-label.switch-label-off for="week_1"  ON
+              input#month_1.switch-input name="view" type="radio" value="month"
+              label.switch-label.switch-label-on for="month_1"  OFF
+              span.switch-selection
 
-          p.switch-info 6 months
+            - @screening = Screening.find_by condition_id: c.name
+            - freq = @screening.min_25_29
+            - if freq > 360
+              - freq = freq / 365
+              p.switch-info data-screening-id="" #{freq} years
+            - elsif freq == 0
+              p.switch-info Not recommended
+            - else
+              - freq = freq / 30
+              p.switch-info #{freq} months
 
-      .card
+      / DOING TO LEAVE THIS HERE FOR DEV WORK ON STATIC CARD
+      /.card
         .card-meta
           .card-title Breast Cancer
           p.card-description Breast cancer occurs when abnormal cells grow out of control in one or both breasts. They can invade nearby tissues and form a mass, called a malignant tumour. The cancer cells can spread (metastasize) to the lymph nodes  and other parts of the body.
