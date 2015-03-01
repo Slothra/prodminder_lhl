@@ -6,6 +6,9 @@ body.app
     .navbar
       +pie-clearfix
 
+      li
+        display: inline-block
+
     .navbar-left
       line-height: 40px
       float: left
@@ -14,9 +17,6 @@ body.app
       line-height: 40px
       float: right
 
-    .logo-brand
-      font-weight: bold
-      color: #fff
     a
       color: #fff
       text-align: center
@@ -26,8 +26,9 @@ body.app
       &:hover
         background: #222
 
+      &.logo-brand
+        &:hover:first-letter
+          +animation(spin 375ms ease-in-out)
+
       &:active
         background: #666
-
-    li
-      display: inline-block

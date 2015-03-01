@@ -25,8 +25,14 @@ end
 
 # User email validate
 get '/dashboard/validate' do
+  # Custom generated url something like this
+  # get '/user/:id/:private_session/validate' do
+  # redirect "/"
+
   slim :dashboard_email_validate, locals: { body_class: "app email-validate" }
 end
+
+
 
 # Post end point for user creation
 post '/user/create' do

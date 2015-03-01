@@ -1,10 +1,16 @@
 body.index
   .site-footer
+    font-size: 75%
     a
-      color: $blue
+      color: rgb(200, 200, 200)
+
+  .button
+    font-size: 100%
+    margin-bottom: 0.5em
+    margin-top: 1em
 
 .masthead
-  background-image: url("/images/masthead-bg.png")
+  background-image: url("/images/prod-bg.jpg")
   background-position: center
   background-repeat: no-repeat
   background-size: cover
@@ -16,26 +22,42 @@ body.index
   min-height: 100%
   color: #fff
 
+  p
+    display: none
+    font-size: 0.75em
+
   h1
     padding: 1em 0
-    font-size: 200%
+    font-size: 3vw
     letter-spacing: .003em
+    position: relative
+
+    &:after
+      content: "For your health."
+      font-size: 0.75em
+      position: relative
+      font-size: 11px
+      top: 30px
+      right: 7%
+
+  .logo-brand
+    font-size: 7.4vw
 
   .container
     display: table-cell
     vertical-align: middle
     position: relative
+    background-color: rgba(0, 64, 128, 0.6)
 
-  .logo-brand
-    width: 150px
-    height: 150px
-    background: #fff
-    margin: 0 auto
-    display: block
-    border-radius: 100%
+  .fa
+    font-size: 80%
+    padding-left: 5px
 
-  .button:hover
-    background: transparent
+  h1 + .button
+    padding: 20px
+
+    &:hover
+      background: transparent
 
   .button.login
     position: absolute
