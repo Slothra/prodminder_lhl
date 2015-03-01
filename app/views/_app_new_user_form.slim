@@ -1,28 +1,57 @@
 section.card.new-user
   form.new-users-signup method="POST" action=""
 
-    h1.card-title Finish Notifications
-    p.card-description Provide your email or SMS number and we'll setup the rest!
+    h1.card-title Set up Notifications
+    p.card-description Fill out the form below and start looking after your health today!
 
     ul.card-list
-      li We'll never sell your data
-      li We'll never spam you
-      li We honestly don't want to know you
+      li We'll won't sell your data
+      li We'll won't spam you
+      li You can stop reminders at any time
 
     input.email name="email" type="email" placeholder="gustavoe@hermanos.com" required=""
 
-    input.phone name="phone" type="tel" placeholder="555-555-5555 — for SMS prods"
+    input.phone name="phone" type="tel" placeholder="555-555-5555 — for SMS prods" maxlength="16"
 
-    //onfocus="(this.type='date')" <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date">
-    input.birth name="dob" required="" type="month" max="#{ 13.years.ago.to_date }" placeholder="Year and month of birth"
+    input.birth name="dob" required="" type="text" placeholder="My birth year and month — YYYY-MM" onfocus="(this.type='month')" max="#{ 13.years.ago.to_date }"
 
     .faux-select
-      select.gender name="gender"
-        option selected="" Gender
+      select.gender name="gender" required=""
+        option disabled="" selected="" I want to see tests affecting:
         option Female
         option Male
 
     input.card-button.button type="submit" value="Sign Up"
 
-    /success
-      / We Prodded your email!
+  //-------------------------------------
+  // Content below is enabled by JS
+  //-------------------------------------
+
+  // Loading
+  .ajax-container.sending
+    .ajax-content
+      .spinner
+        .rect1
+        .rect2
+        .rect3
+        .rect4
+        .rect5
+
+  // Wrong
+  .ajax-container.wrong
+    .ajax-content
+      i.fa.fa-frown-o
+
+      p Oh no! Something went wrong!
+      a.wrong-try-again href="#"
+        | Let's try that again!
+
+  // Success
+  .ajax-container.success
+    .ajax-content
+
+      i.fa.fa-check
+
+      p We've created your reminders!
+      p Go check your email, we've just sent you a verification link
+      p You won't get prodded until you activate your account.
