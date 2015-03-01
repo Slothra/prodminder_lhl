@@ -64,6 +64,19 @@ end
 #   slim :user
 # end
 
+#--------------------------------------
+# Screening Reminders
+#--------------------------------------
+post '/user/:id/condition/:screening_id' do
+  reminder = Reminder.new(
+    user_id: @user.id,
+    screening_id: @user.conditions.screenings.id,
+    last_reminder: Date.today,
+    next_reminder: calc_next_reminder
+  )
+  reminder.save
+end
+
 # create new user
 # get '/user/new' do
 #   slim :'user/new'
