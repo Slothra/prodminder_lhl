@@ -17,6 +17,10 @@ get '/login' do
   slim :login, locals: { body_class: "login"}
 end
 
+get '/logout' do
+  redirect '/'
+end
+
 # User email validate
 get '/dashboard/validate' do
   slim :dashboard_email_validate, locals: { body_class: "app email-validate" }
