@@ -4,11 +4,6 @@ configure do
     ActiveRecord::Base.logger = Logger.new(STDOUT)
   end
 
-  # set :database, {
-  #   adapter: "sqlite3",
-  #   database: "db/db.sqlite3"
-  # }
-
 # Heroku Configuration
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
