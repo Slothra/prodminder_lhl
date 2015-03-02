@@ -70,17 +70,16 @@ post '/user/create' do
     redirect "/"
   end
 
-  # TODO
-  # We need to do something with age before we
-  # put it into the database
-  # binding.pry
-  # age = params[:dob]
-
+  # Take web form month/date and convert to date object
+  user_age = params[:age]
+  today = Date.today.day
+  today.to_s
+  age = "#{user_age}-#{today}"
 
   user = User.new(
     email: params[:email],
     phone: params[:phone],
-    date_of_birth: params[:dob],
+    date_of_birth: age,
     gender: params[:gender]
   )
   user.save
