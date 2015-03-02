@@ -1,15 +1,18 @@
 .dev-mode
   .container
 
-    a.count-switches href="#" Count On Switches with screening_id
-
     p Session.inspect
     pre
       = session.inspect
 
     p
-      | @current_user_logged_in
-      code #{ @current_user_logged_in }
+      | set_find_user(session[:current_user_custom_id])
+      code #{ set_find_user(session[:current_user_custom_id].inspect) }
+
+    p
+      | @user
+      code #{ @user.inspect }
+
 
     br
     pre

@@ -38,11 +38,13 @@ end
 # 	arr << sort_age(user.age)
 # end
 
-def find_user
-  User.find(session[:user_id])
+def set_find_user(custom_user_id)
+  if custom_user_id.nil?
+    return false
+  else
+    @user = User.find_by(custom_id: custom_user_id)
+  end
 end
-
-
 
 def create_user_age(year, month)
 	birthday = Date.new(year, month, 1)

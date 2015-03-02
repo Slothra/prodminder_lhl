@@ -2,13 +2,14 @@
 
 .dashboard
   .container
+    - binding.pry
 
-    - if !@current_user_logged_in
+    - if !set_find_user(session[:current_user_custom_id]).nil?
       == slim :_app_new_user_welcome
 
     == slim :_app_condition_cards
 
-    - if !@current_user_logged_in
+    - if !set_find_user(session[:current_user_custom_id]).nil?
       == slim :_app_new_user_form
 
 == slim :_app_footer
