@@ -51,7 +51,7 @@ get '/login' do
 end
 
 get '/logout' do
-  reset_session
+  session[:current_user_custom_id] = nil
   redirect '/'
 end
 
