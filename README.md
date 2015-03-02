@@ -17,29 +17,32 @@
 ```
 
 # Prodminder
-Midterm Project for Lighthouse Labs
+Midterm Project for Lighthouse Labs Web Dev Feb 2015 Cohort
 
-## Running the Project
+## Running Prodminder
 
-1. `bundle install`
-2. If using vagrant use `shotgun -p 3000 -o 0.0.0.0` or use if locally `shotgun config.ru`
-3. In your browser goto `http://localhost:9393/`
-4. Boom success!
+1. Clone the repo into your local folder, e.g. `git clone (.git ssh url)`.
+2. Run `bundle install` to setup gems.
+3. Configure environment variables, (see note below.)
+4. If using vagrant use `shotgun -p 3000 -o 0.0.0.0` or, if using locally on your Mac/*nix computer, run `bundle exec shotgun config.ru`.
+5. In your local browser, go to `http://localhost:3000/`
+6. Boom goes the dynamite.
 
-### Git work flow for working on features
+## Dependent APIs:
+- Heroku Postgres
+- Mailgun
+- Twilio
 
-* `git checkout master`
-* `git pull` look for `Everything is up to date`
-* `git checkout -b feature_branch_name`
-* `git commit` and `git push feature_branch_name origin` as many times as you like
-  * This will only commit and push your work to the origin (remote server), thus allowing you a copy of your work in case you fuck up.
+## Environment Variables
+- In the base of your /prodminder/ folder, `touch .env` then `vim .env` and setup the following:
+- DATABASE_HOST= (your Heroku Postgres url here)
+- DATABASE_NAME= (your Heroku Postgres name here)
+- DATABASE_USERNAME= (your Heroku Postgres username here)
+- DATABASE_PASSWORD= (your Heroku Postgres password here)
+- MAILGUN_API_KEY= (your Mailgun API key here)
+- TWILIO_ACCOUNT_SID= (your Twilio Account SID here)
+- TWILIO_AUTH_TOKEN= (your Twiilio authentication token here)
+- In `vim`, write then quit editing `.env`. Continue with setup above.
 
-When merging these features back in, we'll do two things, one command you might not be aware of.
-
-* `git checkout master`
-* `git pull` look for `Everything is up to date`
-  * grab latest commites from master
-* `git checkout feature_branch_name`
-  * switch to feature branch
-* `git rebase master`
-  * this will merge in the latest commits from master on top of your local branch, this may result in git conflicts.
+## Support:
+- Support isn't really available; our midterm app is just an academic development project and shouldn't be taken very seriously.
