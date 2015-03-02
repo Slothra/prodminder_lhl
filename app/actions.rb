@@ -23,14 +23,17 @@ get '/dashboard' do
     if @user.gender.downcase == "male"
       @conditions = Condition.where('id >= 3')
     else
-      @conditions = Conditions.all
+      @conditions = Condition.all
     end
 
     # Reminder
+    @enabled_cards = []
+    @user.reminders.each do |reminder|
+      @enabled_cards << reminder.screening_id
+    end
 
     # Age check
     @age = @user.age
-
 
   else
     # NOTE -- User is not logged in
@@ -102,7 +105,7 @@ post '/user/create' do
     if params[:screening_id].length > 0
 
       params[:screening_id].each do |index|
-        current = Reminder.new(screening_id: index, user_id: user.custom_id, last_reminder: Date.today)
+        current = Reminder.new(screening_id: index, user_id: user.id, last_reminder: Date.today)
         current.next_reminder = current.last_reminder + sort_age(Screening.find(index), user.age).days
         current.save
       end

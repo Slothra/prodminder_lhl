@@ -1,6 +1,10 @@
 .cards
   - @conditions.each do |c|
-    .card
+
+    - if @enabled_cards.include? c.id
+      - card_on = "card-enabled"
+    .card class="#{card_on}"
+
       .card-meta
         .card-title #{ c.name }
         p.card-description #{ c.description }
