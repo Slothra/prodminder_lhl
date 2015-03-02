@@ -17,7 +17,7 @@ gem 'compass'
 gem 'slim'
 gem 'breakpoint'
 gem 'susy'
-gem "autoprefixer-rails"
+# gem "autoprefixer-rails"
 
 # APIs
 gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
@@ -25,5 +25,5 @@ gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
 group :development, :test do
   gem 'pry'
   gem 'shotgun'
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
