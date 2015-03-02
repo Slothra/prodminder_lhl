@@ -13,8 +13,11 @@
           span.card-switch-label.switch-label data-off="Off" data-on="On"
           span.card-switch-handle.switch-handle
 
+        - user = User.first
+        - user_age = user.age
+        - binding.pry
         - @screening = Screening.find_by condition_id: c.name
-        - freq = @screening.min_25_29
+        - freq = sort_age(@screening,user_age)
         p.card-switch-meta data-screening-id="#{ @screening.id }"
           - if freq > 360
             - freq = freq / 365
