@@ -8,6 +8,7 @@ require 'sinatra/activerecord'
 require 'mailgun'
 require 'dotenv'
 require 'twilio-ruby'
+require 'securerandom'
 
 # for front-end
 require 'slim'
