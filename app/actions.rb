@@ -29,7 +29,7 @@ get '/dashboard' do
     # Reminder
 
     # Age check
-    @person_age = @user.age
+    @age = @user.age
 
 
   else
@@ -37,7 +37,7 @@ get '/dashboard' do
     @conditions = Condition.all
 
     # Set age
-    @person_age = 30
+    @age = 30
   end
 
   slim :dashboard, locals: { body_class: "app dashboard" }
@@ -71,24 +71,16 @@ end
 
 # Post end point for user creation
 post '/user/create' do
-  if @current_user_logged_in
+  # if @current_user_logged_in
     # current user tryig to POST new user--why?
-    redirect "/"
-  end
+    # redirect "/"
+  # end
 
   # Take web form month/date and convert to date object
   user_age = params[:age]
   today = Date.today.day
   today.to_s
   age = "#{user_age}-#{today}"
-
-  if !params[:screening_id].nil?
-    if params[:screening_id].length > 0
-    binding.pry
-    # TODO
-    # Create reminder for each screening_id
-    end
-  end
 
   user = User.new(
     email: params[:email],
@@ -104,6 +96,19 @@ post '/user/create' do
     custom_session_id: SecureRandom.urlsafe_base64
   )
   user_session.save
+
+  # Create reminder for each screening_id
+  if !params[:screening_id].nil?
+    if params[:screening_id].length > 0
+
+      params[:screening_id].each do |index|
+        current = Reminder.new(screening_id: index, user_id: user.custom_id, last_reminder: Date.today)
+        current.next_reminder = current.last_reminder + sort_age(Screening.find(index), user.age).days
+        current.save
+      end
+
+    end
+  end
 
   send_email("validate_new_user", user, user_session.custom_session_id)
 end
