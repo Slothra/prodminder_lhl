@@ -1,6 +1,40 @@
 //--------------------------------------
 // New card
 //--------------------------------------
+.card.new-user-welcome
+  line-height: 1.4em
+
+  .pre-title
+    font-size: 1em
+    text-transform: uppercase
+    text-align: center
+    letter-spacing: .09em
+
+  .logo-brand
+    text-align: center
+    font-size: 250%
+    color: #444
+    margin-bottom: 1.5em
+
+  p
+    margin-bottom: 1.2em
+
+  li
+    margin-bottom: 1.4em
+    position: relative
+
+    &:before
+      content: "\f105"
+      font: normal normal normal 14px/1 FontAwesome
+      font-size: 1.1em
+      position: absolute
+      left: -16px
+
+  .welcome-message
+    width: 60%
+    margin: 0 auto
+    display: block
+
 .card.new-user
   min-height: 592px
 
