@@ -76,6 +76,13 @@ post '/user/create' do
   today.to_s
   age = "#{user_age}-#{today}"
 
+  if params[:screening_id].length > 0
+    # binding.pry
+    # TODO
+    # Create reminder for each screening_id
+
+  end
+
   user = User.new(
     email: params[:email],
     phone: params[:phone],
