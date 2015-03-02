@@ -3,7 +3,6 @@ require_relative 'helper_methods'
 # NOTE:
 # DON'T ADD TRAILING SLASHES TO PATHS
 #--------------------------------------
-@dev_mode = true
 
 get '/' do
   slim :index , locals: { body_class: "index" }
@@ -40,7 +39,7 @@ get '/dashboard' do
     @conditions = Condition.all
 
     # Set age
-    @age = 30
+    @age = 60
   end
 
   slim :dashboard, locals: { body_class: "app dashboard" }
