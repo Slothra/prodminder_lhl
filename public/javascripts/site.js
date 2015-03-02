@@ -4,6 +4,7 @@ $(function() {
     $(this).toggleClass(".is-on");
   });
 
+  $(".card-enabled .card-switch-input").prop("checked", true);
 
   $(".ajax-container.wrong .wrong-try-again").on("click", function(e) {
     e.preventDefault();

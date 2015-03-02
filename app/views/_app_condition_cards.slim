@@ -1,6 +1,10 @@
 .cards
   - @conditions.each do |c|
-    .card
+
+    - if @enabled_cards.include? c.id
+      - card_on = "card-enabled"
+    .card class="#{card_on}"
+
       .card-meta
         .card-title #{ c.name }
         p.card-description #{ c.description }
@@ -14,7 +18,7 @@
           span.card-switch-handle.switch-handle
 
         - @screening = Screening.find_by(condition_id: c.name)
-        - freq = sort_age(@screening, @user.age)
+        - freq = sort_age(@screening, @age)
         p.card-switch-meta data-screening-id="#{ @screening.id }"
           - if freq > 360
             - freq = freq / 365

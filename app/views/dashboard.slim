@@ -2,7 +2,6 @@
 
 .dashboard
   .container
-    - binding.pry
 
     - if !set_find_user(session[:current_user_custom_id]).nil?
       == slim :_app_new_user_welcome

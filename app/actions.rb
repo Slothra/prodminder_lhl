@@ -19,13 +19,28 @@ get '/dashboard' do
   if set_find_user(session[:current_user_custom_id])
     # NOTE -- User is logged in
 
+    # Gender check
     if @user.gender.downcase == "male"
       @conditions = Condition.where('id >= 3')
+    else
+      @conditions = Condition.all
     end
+
+    # Reminder
+    @enabled_cards = []
+    @user.reminders.each do |reminder|
+      @enabled_cards << reminder.screening_id
+    end
+
+    # Age check
+    @age = @user.age
 
   else
     # NOTE -- User is not logged in
     @conditions = Condition.all
+
+    # Set age
+    @age = 30
   end
 
   slim :dashboard, locals: { body_class: "app dashboard" }
@@ -59,24 +74,16 @@ end
 
 # Post end point for user creation
 post '/user/create' do
-  if @current_user_logged_in
+  # if @current_user_logged_in
     # current user tryig to POST new user--why?
-    redirect "/"
-  end
+    # redirect "/"
+  # end
 
   # Take web form month/date and convert to date object
   user_age = params[:age]
   today = Date.today.day
   today.to_s
   age = "#{user_age}-#{today}"
-
-  if !params[:screening_id].nil?
-    if params[:screening_id].length > 0
-    # binding.pry
-    # TODO
-    # Create reminder for each screening_id
-    end
-  end
 
   user = User.new(
     email: params[:email],
@@ -92,6 +99,19 @@ post '/user/create' do
     custom_session_id: SecureRandom.urlsafe_base64
   )
   user_session.save
+
+  # Create reminder for each screening_id
+  if !params[:screening_id].nil?
+    if params[:screening_id].length > 0
+
+      params[:screening_id].each do |index|
+        current = Reminder.new(screening_id: index, user_id: user.id, last_reminder: Date.today)
+        current.next_reminder = current.last_reminder + sort_age(Screening.find(index), user.age).days
+        current.save
+      end
+
+    end
+  end
 
   send_email("validate_new_user", user, user_session.custom_session_id)
 end
