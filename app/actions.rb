@@ -47,7 +47,8 @@ end
 
 # User login
 get '/login' do
-  slim :login, locals: { body_class: "login"}
+  # slim :login, locals: { body_class: "login"}
+  redirect '404'
 end
 
 get '/logout' do
