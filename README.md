@@ -21,10 +21,10 @@ Midterm Project for Lighthouse Labs Web Dev Feb 2015 Cohort
 
 ## Running Prodminder
 
-1. Clone the repo into your local folder, e.g. `git clone (.git ssh url) prodminder`.
+1. Clone the repo into your local folder, e.g. `git clone (.git ssh url)`.
 2. Run `bundle install` to setup gems.
 3. Configure environment variables, (see note below.)
-4. If using vagrant use `shotgun -p 3000 -o 0.0.0.0` or, if using locally on your Mac/*nix computer, run `shotgun config.ru`.
+4. If using vagrant use `shotgun -p 3000 -o 0.0.0.0` or, if using locally on your Mac/*nix computer, run `bundle exec shotgun config.ru`.
 5. In your local browser, go to `http://localhost:3000/`
 6. Boom goes the dynamite.
 
