@@ -1,13 +1,5 @@
 
 # Sorts
-# def sort_gender(gender)
-# 	if gender == "M"
-# 		10
-# 	else
-# 		11
-# 	end
-# end
-
 def calc_next_reminder
   user_screening = @user.reminders.screening_id.next_reminder
   if user_screening.exist? && user_screening.next_reminder > Date.today
@@ -17,22 +9,21 @@ def calc_next_reminder
   end
 end
 
-def sort_age(age)
-	case age
-	when 18 <= age && age <= 24
-		self.min_18_24
-	when 25 <= age && age <= 29
-		self.min_25_29
-	when 30 <= age && age <= 39
-		self.min_30_39
-	when 40 <= age && age <= 49
-		self.min_40_49
-	when 50 <= age && age <= 59
-		self.min_50_59
-	when 60 <= age && age <= 69
-		self.min_60_69
-	when 70 <= age
-		self.min_70_up
+def sort_age(user_screenings,age)
+	if age.between?(18,24)
+		user_screenings.min_18_24
+	elsif age.between?(25,29)
+		user_screenings.min_25_29
+	elsif age.between?(30,39)
+		user_screenings.min_30_39
+	elsif age.between?(40,49)
+		user_screenings.min_40_49
+	elsif age.between?(50,59)
+		user_screenings.min_50_59
+	elsif age.between?(60,69)
+		user_screenings.min_60_69
+	else
+		user_screenings.min_70_up
 	end
 end
 
@@ -51,16 +42,7 @@ def find_user
   User.find(session[:user_id])
 end
 
-# def new_user
-#   @user = User.new(
-#   	age: create_user_age(params[:year],params[:month])
-#   	gender: params[:gender]
-#   	email: params[:email]
-#   	phone: params[:phone]
-#   )
-#   @user.save
-#   session[:user_id] = @user.id
-# end
+
 
 def create_user_age(year, month)
 	birthday = Date.new(year, month, 1)
@@ -72,8 +54,8 @@ end
 
 ##show all conditions/screenings/frequencies
 
-def find_relevent(age,user_gender)
-	user_conditions = @user.conditions.screenings.where("gender = ? OR gender = 'all'", user_gender)
+def find_relevent(user_gender)
+	user_conditions = self.conditions.screenings.where("gender = ? OR gender = 'all'", user_gender)
 end
 
 

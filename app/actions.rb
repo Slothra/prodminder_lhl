@@ -1,5 +1,4 @@
-require_relative "helper_methods"
-
+require_relative 'helper_methods'
 #--------------------------------------
 # NOTE:
 # DON'T ADD TRAILING SLASHES TO PATHS
@@ -20,14 +19,21 @@ get '/dashboard' do
 
   if @current_user_logged_in
     # -- User has not logged in yet
-    @conditions = Condition.all
+    
+    @screenings = Screening.all
+    user_gender = user.gender.downcase
+    if user_gender == "male"
+      @conditions = Condition.where('id >= 3')
+    else
+      @conditions = Condition.all
+    end
     # @screenings = Screening.all
   else
 
     # TODO -- User is logged in and returning to app
     # Return User personalize active screenings and conditions
     @conditions = Condition.all
-    @screenings = Condition.all
+    @screenings = Screening.all
 
   end
   slim :dashboard, locals: { body_class: "app dashboard" }
