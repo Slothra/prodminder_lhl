@@ -4,18 +4,3 @@ footer.app-footer
 - if @dev_mode == true
 
 == slim :_app_dev_bashboard
-/ .dev-mode
-  .container
-
-    p Session.inspect
-    pre
-      = session.inspect
-
-    p
-      | @current_user_logged_in
-      code #{ @current_user_logged_in }
-
-    br
-    pre
-      = @screenings = Screening.all.inspect
-      = @conditions = Condition.all.inspect

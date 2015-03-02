@@ -15,64 +15,44 @@ end
 
 # App home
 get '/dashboard' do
-  # @current_user_logged_in = false
 
-  if @current_user_logged_in
-    # -- User has not logged in yet
-    
-    @screenings = Screening.all
-    user_gender = user.gender.downcase
-    if user_gender == "male"
+  if set_find_user(session[:current_user_custom_id])
+    # NOTE -- User is logged in
+
+    if @user.gender.downcase == "male"
       @conditions = Condition.where('id >= 3')
-    else
-      @conditions = Condition.all
     end
-    # @screenings = Screening.all
+
   else
-
-    # TODO -- User is logged in and returning to app
-    # Return User personalize active screenings and conditions
+    # NOTE -- User is not logged in
     @conditions = Condition.all
-    @screenings = Screening.all
-
   end
+
   slim :dashboard, locals: { body_class: "app dashboard" }
 end
 
 # User login
 get '/login' do
   slim :login, locals: { body_class: "login"}
-
-  @current_user_logged_in = true
 end
 
 get '/logout' do
-  if @current_user_logged_in
-   # TODO
-   # clear current user session
-     @current_user_logged_in = false
-  end
+  reset_session
   redirect '/'
 end
 
 get '/user/:custom_id/verify/:custom_session_id' do
-  # set user active timestamp
+  @user = User.find_by(custom_id: params[:custom_id])
+  @user.activated_on = Time.now
+  @user.save
+  session[:current_user_custom_id] = @user.custom_id
 
   redirect '/dashboard/validate'
-
 end
 
 # User email validate
 get '/dashboard/validate' do
-  if @current_user_logged_in
-    # current user trying to re-validate email--why?
-    redirect "/dashboard"
-  end
-
-  # TODO
-  # Custom generated url something like this
-  # get '/user/:id/:private_session/validate' do
-  # redirect "/dashboard"
+  set_find_user(session[:current_user_custom_id])
 
   slim :dashboard_email_validate, locals: { body_class: "app email-validate" }
 end
@@ -106,14 +86,12 @@ post '/user/create' do
     date_of_birth: age.to_date
   )
   user.save
-  session[:user_id] = user.custom_id
 
   user_session = Session.new(
     user_id: user.custom_id,
     custom_session_id: SecureRandom.urlsafe_base64
   )
   user_session.save
-  @current_user_logged_in = true
 
   send_email("validate_new_user", user, user_session.custom_session_id)
 end
@@ -151,48 +129,3 @@ not_found do
   status '404'
   slim :x404 , locals: { body_class: "x404"}
 end
-
-# login for returning user
-# get '/user' do
-#   slim :user
-# end
-
-# create new user
-# get '/user/new' do
-#   slim :'user/new'
-# end
-
-#puts condition info/source
-# get '/condition/:id' do
-# end
-
-#main dashboard
-# get 'user/:id/account' do
-# end
-
-#sends email
-# post '/new' do
-#   # valid email/info
-#   if #valid
-#     redirect '/user/validate'
-#   else
-#     slim :'user/new'
-#   end
-# end
-
-#send email
-# post '/account' do
-#   redirect '/user/validate'
-# end
-
-# get '/privacy-policy' do
-# end
-
-# get '/about' do
-# end
-
-# get '/disclaimer' do
-# end
-
-# delete '/account' do
-# end
