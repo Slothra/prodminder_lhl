@@ -31,23 +31,30 @@ $(function() {
     // console.log( "inputBirth: " + inputBirth );
     // console.log( "inputGender: " + inputGender );
 
-    // var formData;
+    var switches = $(".card-controls");
+    var screenings_enabled = [];
+    $.each(switches, function(index, el){
+      if($(el).find(".card-switch-input").prop("checked")) {
+        screenings_enabled.push($(el).find(".card-switch-meta").data("screening-id"));
+      }
+    });
 
     formData = {
       "email": inputEmail,
       "phone": cleanPhone,
       "age": inputBirth,
-      "gender": inputGender
+      "gender": inputGender,
+      "screening_id": screenings_enabled
     };
 
-    console.log( $.param(formData) );
+    // console.log( $.param(formData) );
 
     $.ajax({
       url: "/user/create",
       type: "POST",
       data: formData,
       beforeSend: function(data, textStatus, jqXHR){
-        // console.log("about ot send");
+
         $formParent.addClass("is-sending");
         setTimeout(function() {
           $form.css('display', 'none');
@@ -68,6 +75,5 @@ $(function() {
 
   });
 
-  // jquery for flipswitch button $(".switch-3 input").prop("checked")
 
 });
