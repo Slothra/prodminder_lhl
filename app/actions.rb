@@ -1,3 +1,5 @@
+require_relative "helper_methods"
+
 #--------------------------------------
 # NOTE:
 # DON'T ADD TRAILING SLASHES TO PATHS
@@ -82,11 +84,12 @@ post '/user/create' do
   today.to_s
   age = "#{user_age}-#{today}"
 
-  if params[:screening_id].length > 0
+  if !params[:screening_id].nil?
+    if params[:screening_id].length > 0
     # binding.pry
     # TODO
     # Create reminder for each screening_id
-
+    end
   end
 
   user = User.new(
@@ -105,6 +108,8 @@ post '/user/create' do
   )
   user_session.save
   @current_user_logged_in = true
+
+  send_email("validate_new_user", user, user_session.custom_session_id)
 end
 
 post '/user/:id/validate/:session_id' do
