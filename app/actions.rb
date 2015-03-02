@@ -79,14 +79,18 @@ post '/user/create' do
   user = User.new(
     email: params[:email],
     phone: params[:phone],
-    date_of_birth: age,
-    gender: params[:gender]
+    gender: params[:gender],
+    custom_id: SecureRandom.hex(12),
+    date_of_birth: age.to_date
   )
   user.save
-  session[:user_id] = user.id
-  Session.new(
-    user_id: user.id
-    )
+  session[:user_id] = user.custom_id
+
+  user_session = Session.new(
+    user_id: user.custom_id,
+    custom_session_id: SecureRandom.urlsafe_base64
+  )
+  user_session.save
   @current_user_logged_in = true
 end
 

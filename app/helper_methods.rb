@@ -51,7 +51,6 @@ def find_user
   User.find(session[:user_id])
 end
 
-
 # def new_user
 #   @user = User.new(
 #   	age: create_user_age(params[:year],params[:month])
