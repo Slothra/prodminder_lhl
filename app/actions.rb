@@ -91,7 +91,7 @@ post '/user/create' do
   @current_user_logged_in = true
 end
 
-post '/user/:id/validate/:session_id'
+post '/user/:id/validate/:session_id' do
   @current_user_logged_in = true
   user = User.find(session[:user_id])
 end
