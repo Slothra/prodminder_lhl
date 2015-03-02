@@ -19,13 +19,25 @@ get '/dashboard' do
   if set_find_user(session[:current_user_custom_id])
     # NOTE -- User is logged in
 
+    # Gender check
     if @user.gender.downcase == "male"
       @conditions = Condition.where('id >= 3')
+    else
+      @conditions = Conditions.all
     end
+
+    # Reminder
+
+    # Age check
+    @person_age = @user.age
+
 
   else
     # NOTE -- User is not logged in
     @conditions = Condition.all
+
+    # Set age
+    @person_age = 30
   end
 
   slim :dashboard, locals: { body_class: "app dashboard" }
@@ -72,7 +84,7 @@ post '/user/create' do
 
   if !params[:screening_id].nil?
     if params[:screening_id].length > 0
-    # binding.pry
+    binding.pry
     # TODO
     # Create reminder for each screening_id
     end
