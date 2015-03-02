@@ -28,7 +28,6 @@ get '/dashboard' do
     @screenings = Condition.all
 
   end
-
   slim :dashboard, locals: { body_class: "app dashboard" }
 end
 
@@ -46,6 +45,13 @@ get '/logout' do
      @current_user_logged_in = false
   end
   redirect '/'
+end
+
+get '/user/:custom_id/verify/:custom_session_id' do
+  # set user active timestamp
+
+  redirect '/dashboard/validate'
+
 end
 
 # User email validate
