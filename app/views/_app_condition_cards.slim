@@ -1,7 +1,6 @@
 .cards
   - @conditions.each do |c|
-
-    - if @enabled_cards.include? c.id
+    - if set_find_user(session[:current_user_custom_id]) && @enabled_cards.include?(c.id)
       - card_on = "card-enabled"
     .card class="#{card_on}"
 
@@ -24,7 +23,7 @@
             - freq = freq / 365
             | #{freq} years
           - elsif freq == 0
-            | Not until your older
+            | Not Applicable
           - else
             - freq = freq / 30
             | #{freq} months

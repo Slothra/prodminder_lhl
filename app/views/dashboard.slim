@@ -3,12 +3,12 @@
 .dashboard
   .container
 
-    - if !set_find_user(session[:current_user_custom_id]).nil?
+    - if !set_find_user(session[:current_user_custom_id])
       == slim :_app_new_user_welcome
 
     == slim :_app_condition_cards
 
-    - if !set_find_user(session[:current_user_custom_id]).nil?
+    - if !set_find_user(session[:current_user_custom_id])
       == slim :_app_new_user_form
 
 == slim :_app_footer
