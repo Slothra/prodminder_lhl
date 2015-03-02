@@ -10,10 +10,25 @@
     margin: 0 auto
     transition: opacity 100ms ease
 
+    .birthday-container
+      +pie-clearfix
+      margin-bottom: 1em
+
+      .faux-select
+        width: 48%
+        float: left
+
+        &:last-child
+          float: right
+
     input,
     .faux-select
       max-width: 400px
       display: block
+
+    button
+      margin-left: 0
+      margin-right: 0
 
     .button
       width: 50%

@@ -24,7 +24,11 @@ $(function() {
     var cleanPhone = inputPhone.replace(/\D/g,'');
 
     var inputEmail = $form.find(".email").val().trim();
-    var inputBirth = $form.find(".birth").val();
+    var inputBirthYear = $form.find(".birth-year").val();
+    var inputBirthMonth = $form.find(".birth-month").val();
+    inputBirth = inputBirthYear + "-" + inputBirthMonth;
+    // var inputBirth = $form.find(".birth").val();
+
     var inputGender = $form.find(".gender").val();
 
     // console.log( "inputEmail: " + inputEmail );
