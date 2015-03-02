@@ -1,4 +1,3 @@
-
 # Sorts
 def calc_next_reminder
   user_screening = @user.reminders.screening_id.next_reminder
@@ -33,11 +32,6 @@ def age
   now.year - bday.year - (bday.to_date.change(:year => now.year) > now ? 1 : 0)
 end
 
-# def gen_params(user)
-# 	arr << sort_gender(user.gender)
-# 	arr << sort_age(user.age)
-# end
-
 def set_find_user(custom_user_id)
   if custom_user_id.nil?
     return false
@@ -52,16 +46,13 @@ def create_user_age(year, month)
   now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
 end
 
-# @user = User.find_by email: params[:email]
-
-##show all conditions/screenings/frequencies
-
 def find_relevent(user_gender)
 	user_conditions = self.conditions.screenings.where("gender = ? OR gender = 'all'", user_gender)
 end
 
-
+#--------------------------------------
 # Mailgun API helper
+#--------------------------------------
 def send_email(action, user, session_id)
   mg_client = Mailgun::Client.new ENV['MAILGUN_API_KEY']
 
@@ -102,7 +93,9 @@ def send_email(action, user, session_id)
 
 end
 
+#--------------------------------------
 # Twilio API helper
+#--------------------------------------
 def send_text(action)
   # Grab Twilio account_sid and auth_token from .env
   account_sid = ENV['TWILIO_ACCOUNT_SID']
@@ -121,23 +114,3 @@ def send_text(action)
     body: "Twilio API test text" # We'll need to concatenate our SMS message into here
   })
 end
-
-
-
-# User.where("#{},#{}")
-
-# gen = arr[0]
-# age = arr[1]
-# Reminder.where("orders_count = ? AND locked = ?", params[:gen], params[:age])
-
-# User.where(:age "min_18_24").where(:age "min_25_29").where(:age "min_30_39")
-
-# User.where("" >= :start_date AND created_at <= :end_date",
-#   {start_date: params[:start_date], end_date: params[:end_date]})
-
-#   Reminders = SELECT s.id, s.min_18_24 FROM screenings AS s JOIN reminder AS r WHERE S.id >= 10
-
-
-
-
-
