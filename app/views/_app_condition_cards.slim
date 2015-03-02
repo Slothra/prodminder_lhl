@@ -11,13 +11,11 @@
 
       .card-controls
 
-        label.card-switch.switch.switch-green
-          input.card-switch-input.switch-input type="checkbox"
-          span.card-switch-label.switch-label data-off="Off" data-on="On"
-          span.card-switch-handle.switch-handle
+        p.card-title-sub Screened every
 
         - @screening = Screening.find_by(condition_id: c.name)
         - freq = sort_age(@screening, @age)
+
         p.card-switch-meta data-screening-id="#{ @screening.id }"
           - if freq > 360
             - freq = freq / 365
@@ -27,3 +25,8 @@
           - else
             - freq = freq / 30
             | #{freq} months
+
+        label.card-switch.switch.switch-green
+          input.card-switch-input.switch-input type="checkbox"
+          span.card-switch-label.switch-label data-off="Off" data-on="On"
+          span.card-switch-handle.switch-handle
